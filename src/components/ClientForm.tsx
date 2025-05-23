@@ -41,59 +41,59 @@ export const ClientForm: React.FC<ClientFormProps> = ({
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+        <h3 className="text-lg font-semibold text-white mb-4">
           Client {clientIndex + 1} Information
         </h3>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-gray-300 mb-2">
           Full Name *
         </label>
         <input
           type="text"
           value={clientData.fullName}
           onChange={(e) => onUpdateClient({ fullName: e.target.value })}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+          className="w-full p-3 border border-gray-600 bg-gray-800 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
           placeholder="Enter full name"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-gray-300 mb-2">
           Phone Number *
         </label>
         <input
           type="tel"
           value={clientData.phone}
           onChange={(e) => onUpdateClient({ phone: e.target.value })}
-          className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent ${
+          className={`w-full p-3 border bg-gray-800 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 ${
             clientData.phone && !validatePhone(clientData.phone)
-              ? 'border-red-300'
-              : 'border-gray-300'
+              ? 'border-red-400'
+              : 'border-gray-600'
           }`}
           placeholder="+54 11 1234 5678"
         />
         {clientData.phone && !validatePhone(clientData.phone) && (
-          <p className="text-red-500 text-sm mt-1">Please enter a valid phone number</p>
+          <p className="text-red-400 text-sm mt-1">Please enter a valid phone number</p>
         )}
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-gray-300 mb-2">
           Document Number *
         </label>
         <input
           type="text"
           value={clientData.docNumber}
           onChange={(e) => onUpdateClient({ docNumber: e.target.value })}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+          className="w-full p-3 border border-gray-600 bg-gray-800 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
           placeholder="Enter document number"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-3">
+        <label className="block text-sm font-medium text-gray-300 mb-3">
           Gender *
         </label>
         <div className="space-y-2">
@@ -105,9 +105,9 @@ export const ClientForm: React.FC<ClientFormProps> = ({
                 value={option}
                 checked={clientData.gender === option}
                 onChange={(e) => onUpdateClient({ gender: e.target.value as 'HOMBRE' | 'MUJER' | 'OTRO' })}
-                className="mr-3 text-gray-900 focus:ring-gray-900"
+                className="mr-3 text-blue-500 focus:ring-blue-500 bg-gray-800 border-gray-600"
               />
-              <span className="text-gray-700">{option}</span>
+              <span className="text-gray-300">{option}</span>
             </label>
           ))}
         </div>
@@ -116,7 +116,7 @@ export const ClientForm: React.FC<ClientFormProps> = ({
       <div className="flex space-x-3">
         <button
           onClick={onPrevious}
-          className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+          className="flex-1 py-3 border border-gray-600 text-gray-300 bg-gray-800 rounded-lg font-medium hover:bg-gray-700 transition-colors"
         >
           Previous
         </button>
@@ -125,8 +125,8 @@ export const ClientForm: React.FC<ClientFormProps> = ({
           disabled={!isFormValid()}
           className={`flex-1 py-3 rounded-lg font-medium transition-all duration-200 ${
             isFormValid()
-              ? 'bg-gray-900 text-white hover:bg-gray-800 active:scale-95'
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 shadow-lg hover:shadow-xl transform hover:scale-105'
+              : 'bg-gray-700 text-gray-500 cursor-not-allowed'
           }`}
         >
           Next
