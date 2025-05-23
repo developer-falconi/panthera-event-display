@@ -111,33 +111,33 @@ export const TicketPurchaseModal: React.FC<TicketPurchaseModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="bg-white rounded-xl shadow-xl max-w-md w-full mx-4 max-h-[90vh] overflow-hidden">
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+      <div className="bg-gray-900 rounded-xl shadow-xl max-w-md w-full mx-4 max-h-[90vh] overflow-hidden">
+        <div className="flex items-center justify-between p-6 border-b border-gray-700">
           <div>
-            <h2 className="text-xl font-bold text-gray-900">{event.name}</h2>
-            <p className="text-sm text-gray-600">{getCurrentStepTitle()}</p>
+            <h2 className="text-xl font-bold text-white">{event.name}</h2>
+            <p className="text-sm text-gray-400">{getCurrentStepTitle()}</p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5 text-white" />
           </button>
         </div>
 
         {/* Progress indicator */}
-        <div className="px-6 py-4 bg-gray-50">
+        <div className="px-6 py-4 bg-gray-800">
           <div className="flex items-center space-x-2">
             {Array.from({ length: getTotalSteps() }, (_, i) => (
               <div
                 key={i}
                 className={`h-2 rounded-full flex-1 ${
-                  i + 1 <= step ? 'bg-gray-900' : 'bg-gray-300'
+                  i + 1 <= step ? 'bg-white' : 'bg-gray-600'
                 }`}
               />
             ))}
           </div>
-          <p className="text-xs text-gray-600 mt-2">
+          <p className="text-xs text-gray-400 mt-2">
             Step {step} of {getTotalSteps()}
           </p>
         </div>

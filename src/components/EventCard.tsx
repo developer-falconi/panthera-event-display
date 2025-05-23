@@ -57,7 +57,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event, onBuyTickets }) => 
     : null;
 
   return (
-    <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group">
+    <div className="bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group border border-gray-700">
       <div className="relative">
         <img 
           src={event.logo} 
@@ -67,8 +67,8 @@ export const EventCard: React.FC<EventCardProps> = ({ event, onBuyTickets }) => 
         <div className="absolute top-4 right-4">
           <span className={`px-3 py-1 rounded-full text-xs font-medium ${
             event.status === 'ACTIVE' 
-              ? 'bg-green-100 text-green-800' 
-              : 'bg-gray-100 text-gray-800'
+              ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
+              : 'bg-gray-600/20 text-gray-400 border border-gray-600/30'
           }`}>
             {event.status}
           </span>
@@ -76,31 +76,31 @@ export const EventCard: React.FC<EventCardProps> = ({ event, onBuyTickets }) => 
       </div>
       
       <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-3">{event.name}</h3>
+        <h3 className="text-xl font-bold text-white mb-3">{event.name}</h3>
         
         <div className="space-y-2 mb-4">
-          <div className="flex items-center text-gray-600">
+          <div className="flex items-center text-gray-300">
             <Calendar className="w-4 h-4 mr-2" />
             <span>{formatDate(event.startDate)}</span>
           </div>
-          <div className="flex items-center text-gray-600">
+          <div className="flex items-center text-gray-300">
             <Clock className="w-4 h-4 mr-2" />
             <span>{formatTime(event.startDate)} - {formatTime(event.endDate)}</span>
           </div>
-          <div className="flex items-center text-gray-600">
+          <div className="flex items-center text-gray-300">
             <MapPin className="w-4 h-4 mr-2" />
             <span>{event.location}</span>
           </div>
         </div>
         
-        <div className="text-sm text-gray-700 mb-4 whitespace-pre-line">
+        <div className="text-sm text-gray-400 mb-4 whitespace-pre-line">
           {formatDescription(event.description)}
         </div>
         
         {availableTickets.length > 0 && (
           <div className="mb-4">
-            <p className="text-sm text-gray-600 mb-2">Available tickets from:</p>
-            <p className="text-2xl font-bold text-gray-900">
+            <p className="text-sm text-gray-400 mb-2">Available tickets from:</p>
+            <p className="text-2xl font-bold text-white">
               ${cheapestPrice?.toLocaleString()}
             </p>
           </div>
@@ -111,8 +111,8 @@ export const EventCard: React.FC<EventCardProps> = ({ event, onBuyTickets }) => 
           disabled={availableTickets.length === 0}
           className={`w-full py-3 rounded-lg font-medium transition-all duration-200 ${
             availableTickets.length > 0
-              ? 'bg-gray-900 text-white hover:bg-gray-800 active:scale-95'
-              : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+              ? 'bg-white text-gray-900 hover:bg-gray-100 active:scale-95'
+              : 'bg-gray-700 text-gray-500 cursor-not-allowed'
           }`}
         >
           {availableTickets.length > 0 ? 'Buy Tickets' : 'No Tickets Available'}
